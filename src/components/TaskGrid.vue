@@ -1,7 +1,8 @@
 <template>
   <div class="tasks">
-      <Task v-for="(task, id) in tasks" v-bind:key='task.name' v-bind:task="task" 
-      @taskDeleted="$emit('taskDeleted', id)" />
+      <Task v-for="(task, id) in tasks" v-bind:key='task.name'
+      @taskDeleted="$emit('taskDeleted', id)" @taskState="$emit('taskState', i)" 
+      v-bind:task="task" />
   </div>
 </template>
 

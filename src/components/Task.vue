@@ -1,6 +1,7 @@
 <template>
-  <div class="task" v-bind:class="stateClass">
-      <span @click="$emit('taskDeleted', task)"  class="close">x</span>
+  <div @click="$emit('taskState', task)" 
+        class="task" v-bind:class="stateClass">
+      <span @click.stop="$emit('taskDeleted', task)"  class="close">x</span>
       <p>{{ task.name }}</p>
   </div>
 </template>
@@ -59,7 +60,7 @@ export default {
 
     .close {
         position: absolute;
-        right: 1px;
+        right: 3px;
         top: 15px;
         font-size: 1rem;
         font-weight: 600;

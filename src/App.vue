@@ -2,7 +2,7 @@
   <div id="app">
     <h1>To Do List</h1>
     <NewTask  @taskAdded="addTask" />
-    <TaskGrid @taskDeleted="deleteTask" :tasks = tasks />
+    <TaskGrid v-bind:tasks = tasks @taskDeleted="deleteTask" @taskState="toggleTaskState"  />
   </div>
 </template>
 
@@ -32,6 +32,10 @@ export default {
       },
       deleteTask(i) {
         this.tasks.splice(i, 1);
+      },
+
+      toggleTaskState(i) {
+        this.tasks[i].pending = !this.tasks[i].pending
       }
     },
 }
