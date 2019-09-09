@@ -1,28 +1,61 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <h1>To Do List</h1>
+    <NewTask  @taskAdded="addTask" />
+    <TaskGrid @taskDeleted="deleteTask" :tasks = tasks />
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import TaskGrid from './components/TaskGrid.vue'
+import NewTask from './components/NewTak.vue'
 
 export default {
-  name: 'app',
-  components: {
-    HelloWorld
-  }
+  components: { TaskGrid, NewTask },
+  data() {
+        return {
+            tasks: []
+        }
+    },
+    methods: {
+      addTask(task) {
+        const sameName = t => t.name === task.name;
+        const reallyNew = this.tasks.filter(sameName).length == 0;
+        if(reallyNew) {
+          this.tasks.push({
+            name: task.name,
+            pending: task.pending || true
+          })
+        }else {
+          alert("Está tarefa já foi incluida, favor incluir uma tarefa diferente.")
+        }
+      },
+      deleteTask(i) {
+        this.tasks.splice(i, 1);
+      }
+    },
 }
 </script>
 
 <style>
-#app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
+  body {
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    background: linear-gradient(to right, rgb(45, 80, 50), rgb(58, 80, 100)); 
+    color: white
+  }
+
+  #app {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+  }
+
+  #app h1 {
+    margin-bottom: 5px;
+    font-weight: 200;
+    font-size: 3rem;
+  }
 </style>
