@@ -1,6 +1,7 @@
 <template>
-  <div @click="$emit('taskState', task)" 
-        class="task" v-bind:class="stateClass">
+  <div 
+    @click="$emit('taskStateChanged', task)" 
+    class="task" v-bind:class="stateClass">
       <span @click.stop="$emit('taskDeleted', task)"  class="close">x</span>
       <p>{{ task.name }}</p>
   </div>

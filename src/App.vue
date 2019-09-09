@@ -2,7 +2,7 @@
   <div id="app">
     <h1>To Do List</h1>
     <NewTask  @taskAdded="addTask" />
-    <TaskGrid v-bind:tasks = tasks @taskDeleted="deleteTask" @taskState="toggleTaskState"  />
+    <TaskGrid v-bind:tasks = "tasks" @taskDeleted="deleteTask" @taskStateChanged="toggleTaskState"  />
   </div>
 </template>
 
