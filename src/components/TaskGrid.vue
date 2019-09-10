@@ -12,7 +12,7 @@ import Task from './Task.vue'
 export default {
     components: { Task },
     props: {
-        tasks: { type: Array, required: true }
+        tasks: { type: Array, required: true },
     }
 }
 </script>
@@ -20,6 +20,7 @@ export default {
 <style>
     .tasks {
         display: flex;
+        flex-direction: row;
         justify-content: center;
         flex-wrap: wrap;
     }
