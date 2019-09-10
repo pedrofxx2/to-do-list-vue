@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <h1>To Do List</h1>
+    <h1>Lista de tarefas (To Do List)</h1>
     <p v-if="tasks.length === 0">Adicione uma tarefa para começar!</p>
     <p>obs: Não se pode incluir tarefas repetidas e as mesmas devem ter pontuações entre 1 e 13.</p>
     <TaskProgress :progress = "progress" />
