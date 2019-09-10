@@ -7,7 +7,7 @@
     <h2 v-if="progress === 100">As Tarefas foram concluidas!</h2>
     <NewTask  @taskAdded="addTask" />
     <TaskGrid v-bind:tasks = "tasks" @taskDeleted="deleteTask" @taskStateChanged="toggleTaskState"  />
-    <h2>Suas tarefas somam {{ totalPoints() }} pontos</h2>
+    <h2 v-if="totalPoints() != 0">Suas tarefas somam {{ totalPoints() }} pontos</h2>
   </div>
 </template>
 
