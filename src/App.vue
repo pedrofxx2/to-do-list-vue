@@ -8,6 +8,7 @@
     <NewTask  @taskAdded="addTask" />
     <TaskGrid v-bind:tasks = "tasks" @taskDeleted="deleteTask" @taskStateChanged="toggleTaskState"  />
     <h2 v-if="totalPoints() != 0">Suas tarefas somam {{ totalPoints() }} pontos</h2>
+
   </div>
 </template>
 
@@ -21,7 +22,7 @@ export default {
   components: {  TaskGrid, NewTask, TaskProgress },
    data() {
         return {
-          tasks: []
+          tasks: [],
           // days: [
           //   monday= { tasks: [], points: 0 },
           //   tuesday= { tasks: [], points: 0 },
@@ -61,13 +62,32 @@ computed: {
       addTask(task) {
        //let total = 0
         const sameName = t => t.name === task.name;      
-        const reallyNew = this.tasks.filter(sameName).length == 0
+        const reallyNew = this.tasks.filter(sameName).length == 0 
+        var points = this.totalPoints() + parseInt(task.points)
+        console.log(points)
+        if(points <= 13){
+          task.day = 1
+        }else if(points > 13 && points <= 26){
+           task.day = 2
+        }else if(points > 26 && points <= 39){
+           task.day = 3
+        }else if(points > 39 && points <= 52){
+          task.day = 4
+        }else if(points > 52 && points <= 65){
+          task.day = 5
+        }else if(points > 65 && points <= 78){
+          task.day = 6
+        }else if(points > 78 && points <= 91){
+          task.day = 7
+        }
         if(reallyNew && task.points != 0) {
           this.tasks.push({
             name: task.name,
             pending: task.pending || true,
-            points: task.points
+            points: task.points,
+            day: task.day
           })
+          
         }else{
           alert("Não pode adicionar uma tarefa repetida e nem uma tarefa com valor 0")
         }

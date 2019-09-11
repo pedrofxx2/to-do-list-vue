@@ -3,7 +3,7 @@
     @click="$emit('taskStateChanged', task)" 
      class="task" v-bind:class="stateClass">
       <span @click.stop="$emit('taskDeleted', task)"  class="close">x</span>
-      <p>{{ task.name }} {{ task.points + "pt"}}</p>
+      <p>{{ task.name }} {{ task.points + "pt /"}} {{  task.day + '° dia' }}</p>
   </div>
 </template>
 
@@ -28,7 +28,7 @@ export default {
         position: relative;
         box-sizing: border-box;
         width: 350px;
-        height: 50px;
+        height: 150px;
         padding: 8px;
         border-radius: 8px;
         font-size: 2rem;

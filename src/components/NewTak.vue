@@ -31,9 +31,10 @@ export default {
     },
     methods: {
         add() {
-            this.$emit('taskAdded', { name: this.name, points: this.points })
+            this.$emit('taskAdded', { name: this.name, points: this.points, day:this.day })
             this.name = ''
             this.points = 0
+            this.day = 0
         }
     }
 }
